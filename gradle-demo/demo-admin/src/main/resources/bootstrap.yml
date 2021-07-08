@@ -1,0 +1,79 @@
+spring:
+  application:
+    name: demo-admin
+  profiles:
+    active: dev
+---
+#开发环境
+spring:
+  profiles: dev
+  cloud:
+    nacos:
+      # 配置
+      config:
+        # 开发空间ID
+        namespace: 01-DEV
+        # 分组
+        group: demo
+        # Nacos地址
+        server-addr: localhost:8848
+        # Nacos用户名
+        username: nacos
+        # Nacos用户密码
+        password: nacos
+        # Nacos文件后缀
+        file-extension: yml
+      # 发布服务时需要加上这个，不然Nacos无法监听到
+      discovery:
+        # 开发空间ID
+        namespace: 01-DEV
+        # 分组
+        group: demo
+        # Nacos地址
+        server-addr: localhost:8848
+        # 设置应用访问路径
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+---
+#测试环境
+spring:
+  profiles: tst
+  cloud:
+    nacos:
+      config:
+        namespace: 02-TST
+        group: demo
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        file-extension: yml
+      discovery:
+        namespace: 02-TST
+        group: demo
+        server-addr: localhost:8848
+        # 设置应用访问路径
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator
+---
+#生产环境
+spring:
+  profiles: prd
+  cloud:
+    nacos:
+      config:
+        namespace: 03-PRD
+        group: demo
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        file-extension: yml
+      discovery:
+        namespace: 03-PRD
+        group: demo
+        server-addr: localhost:8848
+        # 设置应用访问路径
+        metadata:
+          management:
+            context-path: ${server.servlet.context-path}/actuator

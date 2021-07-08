@@ -1,0 +1,102 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.10.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'com.github.shalousun.smart-doc' version '2.1.9'
+    id 'java'
+    id 'groovy'
+    id 'idea'
+    id 'eclipse'
+    id 'maven'
+    id 'maven-publish'
+}
+
+group = 'com.andy.java.demo'
+version = '0.0.0.1'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    maven{url uri('/software/resource/maven-repository')}
+    mavenCentral()
+}
+
+ext {
+    set('springBootAdminVersion', "2.3.1")
+    set('alibabaNacos', "2.2.5.RELEASE")
+
+    set('swagger',"2.9.2")
+    set('hutool', "5.6.6")
+}
+configurations {
+    implementation.exclude module: 'spring-boot-starter-tomcat'
+}
+
+dependencies {
+//  基础框架依赖
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "de.codecentric:spring-boot-admin-starter-client:${springBootAdminVersion}"
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    implementation 'com.andy.java:common:0.0.0.1'
+
+    // register and discovery
+    implementation "com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery:${alibabaNacos}"
+    implementation "com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config:${alibabaNacos}"
+
+    // db operation
+//    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.24'
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '4.0.3'
+
+    // api docs
+    implementation "io.springfox:springfox-swagger2:${swagger}"
+    implementation "io.springfox:springfox-swagger-ui:${swagger}"
+    implementation "cn.torna:swagger-plugin-starter:1.0.0"
+    implementation "com.github.shalousun:smart-doc:2.1.9"
+    implementation "com.github.shalousun:smart-doc-gradle-plugin:2.1.9"
+
+    // tools
+    implementation "cn.hutool:hutool-all:${hutool}"
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'com.alibaba:fastjson:1.2.76'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "de.codecentric:spring-boot-admin-dependencies:${springBootAdminVersion}"
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+test {
+    useJUnitPlatform()
+}
+publishing {
+    publications {
+        myPublish(MavenPublication){
+            artifact bootJar
+            from components.java
+        }
+    }
+//    repositories{
+//        // 发布到USER/.m2/repository
+////        mavenLocal()
+//        maven{url uri('D:/03-Resource/maven-respository')}
+//    }
+}

@@ -1,0 +1,20 @@
+{
+  "serverUrl": "http://localhosts:50101/demo-sample/",
+  "isStrict": false,
+  "allInOne": true,
+  "outPath": "src/main/resources/static/doc",
+  "coverOld": true,
+  "createDebugPage": true,
+  "style":"xt256",
+  "packageFilters": "com.andy.java.demo.sample",
+  "appKey": "20210609852316073393913856",
+  "appToken": "bd12917f5997443fb1487cf6757a1739",
+  "secret": "uijxYucUH&iOPjWq$n=K=2nA,IV5rnuS",
+  "openUrl": "http://localhost:7700/api",
+  "md5EncryptedHtmlName": true,
+  "projectName": "demo-sample",
+  "tornaDebug": true,
+  "inlineEnum": true,
+  "skipTransientField": true,
+  "debug-env": "dev,http://127.0.0.1:50101/demo-sample"
+}

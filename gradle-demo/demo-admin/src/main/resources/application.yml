@@ -1,0 +1,28 @@
+#module:
+#  name: demo-admin
+#management:
+#  endpoint:
+#    health:
+#      show-details: always
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#  health:
+#    mail:
+#      enabled: false
+#    rabbit:
+#      enabled: false
+#server:
+#  port: 50000
+#  servlet:
+#    context-path: /${module.name}
+#spring:
+#  banner:
+#    image:
+#      invert: false
+#  application:
+#    name: ${module.name}
+#logging:
+#  level:
+#    root: INFO
