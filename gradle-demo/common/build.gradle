@@ -1,0 +1,43 @@
+plugins {
+    id 'groovy'
+    id 'java'
+    id 'idea'
+    id 'maven'
+    id 'maven-publish'
+}
+
+group 'com.andy.java'
+version '0.0.0.1'
+
+repositories {
+    maven{url uri('D:/03-Resource/maven-respository')}
+    mavenCentral()
+}
+
+dependencies {
+//    implementation 'org.codehaus.groovy:groovy-all:3.0.5'
+//    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+//    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+//    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar.enabled = true
+// 需要org.springframework.boot插件 不需要打包成可执行的jar
+//bootJar.enabled = false
+
+publishing {
+    publications {
+        myPublish(MavenPublication){
+            from components.java
+        }
+    }
+    repositories{
+        maven{url uri('D:/03-Resource/maven-respository')}
+        mavenCentral()
+    }
+}
