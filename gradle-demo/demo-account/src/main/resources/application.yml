@@ -1,0 +1,62 @@
+#module:
+#  name: demo-sample
+#  swagger:
+#    title: ${module.name}
+#    desc: 样例项目接口文档
+#    version: 1.0
+#    scan-path: com.andy.java.demo.sample
+#management:
+#  endpoint:
+#    health:
+#      show-details: always
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#  health:
+#    mail:
+#      enabled: false
+#    rabbit:
+#      enabled: false
+#server:
+#  port: 50101
+#  servlet:
+#    context-path: /${module.name}
+#spring:
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:50000
+#  banner:
+#    image:
+#      invert: false
+#  application:
+#    name: ${module.name}
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+#    username: root
+#    password: 1qaz@WSX
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+##  redis:
+##    host: localhost
+##    port: 6379
+#logging:
+#  file: demo-sample.log
+#  level:
+#    root: INFO
+#torna:
+#  swagger-plugin:
+#    enable: true
+#    basePackage: com.andy.java.demo.sample
+#    url: http://localhost:7700/api
+#    token: bd12917f5997443fb1487cf6757a1739
+#    app-key: 20210609852316073393913856
+#    secret: uijxYucUH&iOPjWq$n=K=2nA,IV5rnuS
+#    debug-env: dev,http://127.0.0.1:50101/demo-sample
+#    author: andy
+#    debug: true
+#    method-when-multi: GET
+#    is-replace: true
