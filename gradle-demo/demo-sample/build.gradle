@@ -6,7 +6,7 @@ plugins {
     id 'groovy'
     id 'idea'
     id 'eclipse'
-    id 'maven'
+//    id 'maven'
     id 'maven-publish'
 }
 
