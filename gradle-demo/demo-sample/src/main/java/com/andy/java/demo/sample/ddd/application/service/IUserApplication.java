@@ -1,6 +1,6 @@
 package com.andy.java.demo.sample.ddd.application.service;
 
-import com.andy.java.demo.sample.ddd.infrastructure.po.UserEntity;
+import com.andy.java.demo.sample.ddd.infrastructure.po.UserEntityOld;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
@@ -14,12 +14,12 @@ public interface IUserApplication
      * @param id
      * @return
      */
-    public UserEntity findById(Long id);
+    public UserEntityOld findById(Long id);
 
     /**
      *
      * @param page
      * @return
      */
-    public Page<UserEntity> findUsersWithPage(PageRequest page);
+    public Page<UserEntityOld> findUsersWithPage(PageRequest page);
 }

@@ -25,4 +25,9 @@ public class EventEntity extends BaseEntity implements Serializable
 
     @Column(name="args")
     private String args;
+
+    public void save()
+    {
+
+    }
 }

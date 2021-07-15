@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "领域驱动测试", value = "领域驱动测试")
 public class DddController
 {
+    @Deprecated
     @ApiOperation(value = "测试接口", notes = "没有说明")
     @RequestMapping(value = "test", method = RequestMethod.GET)
     public String dddTest()

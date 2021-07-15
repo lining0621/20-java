@@ -1,6 +1,6 @@
 package com.andy.java.demo.sample.ddd.infrastructure.repository.mysql;
 
-import com.andy.java.demo.sample.ddd.infrastructure.po.UserEntity;
+import com.andy.java.demo.sample.ddd.infrastructure.po.UserEntityOld;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -12,18 +12,17 @@ import java.util.Optional;
  * @author li-ning
  */
 @Repository("userMysqlRepository")
-public interface UserMysqlRepository extends PagingAndSortingRepository<UserEntity, Long>,
-                                             JpaSpecificationExecutor<UserEntity>,
-                                             JpaRepository<UserEntity,Long>,
-                                             MysqlRepository
+public interface UserMysqlRepository extends PagingAndSortingRepository<UserEntityOld, Long>,
+                                             JpaSpecificationExecutor<UserEntityOld>,
+                                             JpaRepository<UserEntityOld,Long>
 {
     /**
      *
-     * @param userEntity
+     * @param userEntityOld
      * @return
      */
     @Override
-    UserEntity save(UserEntity userEntity);
+    UserEntityOld save(UserEntityOld userEntityOld);
 
     /**
      *
@@ -31,5 +30,5 @@ public interface UserMysqlRepository extends PagingAndSortingRepository<UserEnti
      * @return
      */
     @Override
-    Optional<UserEntity> findById(Long id);
+    Optional<UserEntityOld> findById(Long id);
 }

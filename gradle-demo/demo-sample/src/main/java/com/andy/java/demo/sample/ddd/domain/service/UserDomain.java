@@ -1,6 +1,6 @@
 package com.andy.java.demo.sample.ddd.domain.service;
 
-import com.andy.java.demo.sample.ddd.infrastructure.po.UserEntity;
+import com.andy.java.demo.sample.ddd.infrastructure.po.UserEntityOld;
 import com.andy.java.demo.sample.ddd.infrastructure.repository.mysql.UserMysqlRepository;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,14 +15,14 @@ import org.springframework.stereotype.Service;
 @Service("userDomain")
 public class UserDomain
 {
-    public UserEntity findById(Long id)
+    public UserEntityOld findById(Long id)
     {
-        UserEntity userEntity = userMysqlRepository.findById(id).orElse(null);
+        UserEntityOld userEntityOld = userMysqlRepository.findById(id).orElse(null);
 
-        return userEntity;
+        return userEntityOld;
     }
 
-    public Page<UserEntity> findUsersWithPage(PageRequest page)
+    public Page<UserEntityOld> findUsersWithPage(PageRequest page)
     {
         return userMysqlRepository.findAll(page);
     }

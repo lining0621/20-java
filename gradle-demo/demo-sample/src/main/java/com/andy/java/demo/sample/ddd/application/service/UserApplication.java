@@ -1,7 +1,7 @@
 package com.andy.java.demo.sample.ddd.application.service;
 
 import com.andy.java.demo.sample.ddd.domain.service.UserDomain;
-import com.andy.java.demo.sample.ddd.infrastructure.po.UserEntity;
+import com.andy.java.demo.sample.ddd.infrastructure.po.UserEntityOld;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +17,12 @@ import org.springframework.stereotype.Service;
 public class UserApplication implements IUserApplication
 {
     @Override
-    public UserEntity findById(Long id)
+    public UserEntityOld findById(Long id)
     {
         return userDomain.findById(id);
     }
     @Override
-    public Page<UserEntity> findUsersWithPage(PageRequest page)
+    public Page<UserEntityOld> findUsersWithPage(PageRequest page)
     {
         return userDomain.findUsersWithPage(page);
     }

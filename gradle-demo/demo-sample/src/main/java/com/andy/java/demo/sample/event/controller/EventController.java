@@ -25,6 +25,7 @@ public class EventController extends BaseController
     @Autowired
     private AccountEventPublisher accountEventPublisher;
 
+    @Deprecated
     @ApiOperation(value = "测试接口", notes = "没有说明")
     @RequestMapping(value = "test", method = RequestMethod.GET)
     public String eventTest()
